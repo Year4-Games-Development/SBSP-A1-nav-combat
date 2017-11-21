@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CannonsBatteryRight
   - CannonsBatteryLeft
+  - Enemy
+  - Asteroid
   layers:
   - Default
   - TransparentFX
