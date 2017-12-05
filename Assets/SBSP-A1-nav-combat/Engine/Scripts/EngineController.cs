@@ -10,6 +10,9 @@ public class EngineController : MonoBehaviour {
 	private Engine engine;
 	public string axis;
 	private Rigidbody rb;
+	private float timePassed = 6;
+
+	float mag;
 
 	// Use this for initialization
 	void Start () {
@@ -17,25 +20,38 @@ public class EngineController : MonoBehaviour {
 		engine = new Engine();
 		engView = GetComponent<EngineView>();
 		engView.UpdatePower(engine.GetPower());
-		engView.UpdateEngineState(engine.GetIsOn());
+		//engView.UpdateEngineState(engine.GetIsOn());
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		mag = rb.velocity.magnitude;
+		engView.UpdateVelocity (mag);
+
+
+
 		if(axis == "Forward")
 		{
-			rb.AddForce(engine.GetPower() * transform.forward);
+			if (timePassed < 3) {
+				rb.AddForce (engine.GetPower () * transform.forward);
+				timePassed += Time.deltaTime;
+			}
 		}
 		if (axis == "Backward")
 		{
 
-			rb.AddForce(-engine.GetPower() * transform.forward);
+			if ( timePassed < 3)
+			{
+				rb.AddForce (-engine.GetPower () * transform.forward);
+				timePassed += Time.deltaTime;
+			}
 		}
 	}
 
 	//TrunOnEngine method
 	//sets power of the engine to zero and isOn to true
-	public void TurnOnEngine()
+	/*public void TurnOnEngine()
 	{
 		if (!engine.GetIsOn())
 		{
@@ -65,18 +81,23 @@ public class EngineController : MonoBehaviour {
 		{
 			Debug.Log("Cannot turn off engine, engine is OFF");
 		}
-	}
+	}*/
 
 	public void Accelerate(Slider slider)
 	{
-		if (engine.GetIsOn())
-		{
 			engine.SetPower((slider.value));
 			engView.UpdatePower(engine.GetPower());
-		}
-		else
-		{
-			Debug.Log("Cannot accelerate, engine is OFF");
-		}
+
+
+	}
+
+	public void OneTimeThrust(Slider slider)
+	{
+
+		engine.SetPower((slider.value));
+		engView.UpdatePower(engine.GetPower());
+		timePassed = 0;
+
+
 	}
 }
