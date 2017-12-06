@@ -5,14 +5,14 @@ Run the MainScene.unity to see last updates :)
 
 This folder contains all components.
 
-Thruster, Autopilot - *Wayne*
+Thruster - *Wayne*
 
 Engine - *Jakub*
 
 Rocket - *Ross*
 
-Shield, Enemy Ship - *David*
+Shield - *David*
 
 Radar - *Stephen*
 
-Cannon, Canvas, Player - *Kris*
+Cannon - *Kris*
