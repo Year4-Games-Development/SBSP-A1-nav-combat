@@ -28,6 +28,7 @@ public class EngineView : MonoBehaviour {
 	{
 		accSlider.onValueChanged.AddListener(delegate { engineCont.Accelerate(accSlider); });
 		accSlider2.onValueChanged.AddListener(delegate { engineCont.Accelerate(accSlider2); });
+
 	}
 
 	//update text message for the power value
@@ -46,7 +47,9 @@ public class EngineView : MonoBehaviour {
 		int vel1 = Mathf.RoundToInt (vel);
 		string velMessage = "Velocity: " + vel1 + " km/sec";
 		velText.text = velMessage;
+
 		velText2.text = velMessage;
+
 
 	}
 
