@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
-	public Canvas[] AllCanvas; 
+	//public Canvas[] AllCanvas; 
+	public GameObject[] AllCanvas; 
 
 	/*
 	public Canvas Canvas1_Captain;
@@ -34,15 +35,17 @@ public class PlayerScript : MonoBehaviour {
 
 	private void roleSetUpINIT (){
 		for (int i = 0; i < AllCanvas.Length; i++) {
-			AllCanvas [i].enabled = false;
+			//AllCanvas [i].enabled = false;
+			AllCanvas [i].SetActive(false);
 		}
 	}
 
 	private void changeActivePlayerRoleUI(int newRole){
 		for (int i = 0; i < AllCanvas.Length; i++) {
-			AllCanvas [i].enabled = false;
+			//AllCanvas [i].enabled = false;
+			AllCanvas [i].SetActive(false);
 		}
-		AllCanvas [newRole].enabled = true;
+		AllCanvas [newRole].SetActive(true);
 	}
 
 	public void ChangePlayerRoleSlider(float newRole){
