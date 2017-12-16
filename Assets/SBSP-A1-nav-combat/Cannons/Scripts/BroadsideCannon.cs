@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class BroadsideCannon : NetworkBehaviour {
+public class BroadsideCannon : MonoBehaviour {
 
 	public CannonBall cannonBallPrefab;
 	//public GameObject cannonBallPrefab;
