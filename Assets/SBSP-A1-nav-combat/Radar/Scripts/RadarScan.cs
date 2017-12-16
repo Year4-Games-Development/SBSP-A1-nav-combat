@@ -11,7 +11,7 @@ public class RadarScan : MonoBehaviour
     Image Asteroidimg;
     int timerSeconds = 5;
     Text t_display;
-        
+         
 	void Start() 
 	{       
 		Enemy = GameObject.Find("Enemy");   
