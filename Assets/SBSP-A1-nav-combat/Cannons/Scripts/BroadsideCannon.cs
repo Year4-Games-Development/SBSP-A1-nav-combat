@@ -13,6 +13,7 @@ public class BroadsideCannon : MonoBehaviour {
 		CannonBall newBall = Instantiate (cannonBallPrefab, transform.position, transform.rotation);
 		newBall.setTimeToArm (30f);
 		newBall.setTimeToDetonate (cannonsController.CannonBallDistance);
+		newBall.setBaseDamage (cannonsController.CannonBallDamage);
 		Rigidbody rigidbody;
 		rigidbody = newBall.GetComponent<Rigidbody>();
 		rigidbody.AddForce(transform.up * cannonsController.CannonThrustForce * cannonsController.CannonsThrustMaxForce);

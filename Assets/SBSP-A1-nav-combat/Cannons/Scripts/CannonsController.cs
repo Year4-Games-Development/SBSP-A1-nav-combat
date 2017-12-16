@@ -48,6 +48,9 @@ public class CannonsController : MonoBehaviour {
 
 	//===================================================================================================================================================================
 
+	public int CannonBallDamage{
+		get{return broadsideCannonsModel.CannonBallDamage;}
+	}
 
 	public float CannonThrustForce{
 		get {return broadsideCannonsModel.CannonThrustForce;}

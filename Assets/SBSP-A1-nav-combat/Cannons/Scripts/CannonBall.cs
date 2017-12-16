@@ -7,7 +7,7 @@ public class CannonBall : MonoBehaviour {
 	private float timeToDetonate;
 	private float timeToArmLeft;
 	private float explosionRange;
-	private float baseDamage;
+	private int baseDamage;
 	private float startTime = 0f;
 
 	// todo range of explosion - collision dettection
@@ -17,7 +17,7 @@ public class CannonBall : MonoBehaviour {
 	public void setTimeToArm(float tta){timeToArm = tta;}
 	public void setTimeToDetonate(float ttd){timeToDetonate = ttd;}
 	public void setExplosionRange(float er){explosionRange = er;}
-	public void setBaseDamage(float dmg){baseDamage = dmg;}
+	public void setBaseDamage(int dmg){baseDamage = dmg;}
 
 	void Start(){
 		Invoke("Detonate", timeToDetonate);
@@ -26,20 +26,15 @@ public class CannonBall : MonoBehaviour {
 	private int counter = 0;
 	private float deltaTime = 0f;
 
-	void Update(){/*
-		if (counter % 100 == 0) {
-			//Debug.LogError("timeToArm :" + timeToArm);
-			//Debug.LogError("timeToDetonate :" + timeToDetonate);
-			//deltaTime = Time.time - startTime;
-			//Debug.Log ("Delta time = " + deltaTime);
-			timeToArmLeft = timeToArm - deltaTime;
-			//Debug.Log ("timeToArmLeft :" + timeToArmLeft);
-		}
-		counter += 1;
-		*/
-	}
+
 
 	void OnCollisionEnter(Collision collision){
+		if (collision.gameObject.CompareTag ("Enemy")) {
+			EnemyBaseScript enemy = collision.gameObject.GetComponent<EnemyBaseScript> ();
+			if (enemy != null) {
+				enemy.damageHealth (baseDamage);
+			}
+		}
 		Detonate ();
 	}
 
