@@ -9,8 +9,12 @@ public class EngineView : MonoBehaviour {
 	public Text powerText;
 	public Text engineStateText;
 	public Slider accSlider;
-	public Toggle toggle;
-	public Text toggleText;
+	public Text velText;
+
+	public Text powerText2;
+	public Text engineStateText2;
+	public Slider accSlider2;
+	public Text velText2;
 
 	private EngineController engineCont;
 
@@ -22,10 +26,9 @@ public class EngineView : MonoBehaviour {
 
 	private void Start()
 	{
-		toggle.isOn = false;
-		toggle.onValueChanged.AddListener(delegate { ToggleButtonEngine(); });
 		accSlider.onValueChanged.AddListener(delegate { engineCont.Accelerate(accSlider); });
-		accSlider.interactable = false;
+		accSlider2.onValueChanged.AddListener(delegate { engineCont.Accelerate(accSlider2); });
+
 	}
 
 	//update text message for the power value
@@ -35,10 +38,22 @@ public class EngineView : MonoBehaviour {
 
 		//update UI on the screen with the message
 		powerText.text = powerMessage;
+		powerText2.text = powerMessage;
 
 	}
 
-	public void UpdateEngineState(bool engineState)
+	public void UpdateVelocity(float vel)
+	{
+		int vel1 = Mathf.RoundToInt (vel);
+		string velMessage = "Velocity: " + vel1 + " km/sec";
+		velText.text = velMessage;
+
+		velText2.text = velMessage;
+
+
+	}
+
+	/*public void UpdateEngineState(bool engineState)
 	{
 		string engineStateString;
 
@@ -59,9 +74,9 @@ public class EngineView : MonoBehaviour {
 		string engineStateMessage = "Engine : " + engineStateString;
 
 		engineStateText.text = engineStateMessage;
-	}
+	}*/
 
-	public void ToggleButtonEngine(){
+	/*public void ToggleButtonEngine(){
 		if (toggle.isOn) {
 			toggleText.text = "ON";
 			engineCont.TurnOnEngine();
@@ -69,6 +84,6 @@ public class EngineView : MonoBehaviour {
 			toggleText.text = "OFF";
 			engineCont.TurnOffEngine();
 		}
-	}
+	}*/
 
 }
