@@ -16,6 +16,10 @@ public class EngineView : MonoBehaviour {
 	public Slider accSlider2;
 	public Text velText2;
 
+	public Slider autoSlider;
+	public Text autoText;
+	public Text autoPowText;
+
 	private EngineController engineCont;
 
 
@@ -28,7 +32,12 @@ public class EngineView : MonoBehaviour {
 	{
 		accSlider.onValueChanged.AddListener(delegate { engineCont.Accelerate(accSlider); });
 		accSlider2.onValueChanged.AddListener(delegate { engineCont.Accelerate(accSlider2); });
+<<<<<<< HEAD
+		autoSlider.interactable = false;
+		autoSlider.onValueChanged.AddListener (delegate {engineCont.EngineAutoAcc(autoSlider);});
+=======
 
+>>>>>>> upstream/newdev
 	}
 
 	//update text message for the power value
@@ -39,6 +48,7 @@ public class EngineView : MonoBehaviour {
 		//update UI on the screen with the message
 		powerText.text = powerMessage;
 		powerText2.text = powerMessage;
+		autoPowText.text = powerMessage;
 
 	}
 
