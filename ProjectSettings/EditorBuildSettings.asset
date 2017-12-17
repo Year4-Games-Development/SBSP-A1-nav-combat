@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/SBSP-A1-nav-combat/Networking/Scenes/LobbyScene.unity
+    guid: fffb73b16af49c042acca6b4bfee9fe5
+  - enabled: 1
+    path: Assets/_Scenes/MainSceneV005.unity
+    guid: 7f204ab60c36cbb468bb81c8bee5839e

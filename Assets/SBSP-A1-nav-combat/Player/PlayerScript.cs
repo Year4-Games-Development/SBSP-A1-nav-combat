@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
+	//public Canvas[] AllCanvas; 
+	public GameObject[] AllCanvas; 
+
+	/*
 	public Canvas Canvas1_Captain;
-	public Canvas Canvas2_Engineer;
+	public Canvas Canvas2_Navigator;
 	public Canvas Canvas3_Combat;
+	public Canvas Canvas4_Manufacturing;
+	public Canvas Canvas5_Power;
+
+*/
 	private int playerRole;
 	public int PlayerRole{
 		get {return playerRole;}
 		set {
 			if (playerRole == value) {
 				return;
-			} else if (value <= 1 && value <=  3) {
+			} else if (value <= 0 && value <=  4) {
 				playerRole = value;
 				changeActivePlayerRoleUI (value);
 			}
@@ -20,42 +28,24 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Start(){
-		PlayerRole = 1;
+		roleSetUpINIT ();
+		PlayerRole = 0;
+		changeActivePlayerRoleUI (0);
+	}
+
+	private void roleSetUpINIT (){
+		for (int i = 0; i < AllCanvas.Length; i++) {
+			//AllCanvas [i].enabled = false;
+			AllCanvas [i].SetActive(false);
+		}
 	}
 
 	private void changeActivePlayerRoleUI(int newRole){
-		if (newRole == 1) {
-			if (Canvas1_Captain.enabled == false) {
-				Canvas1_Captain.enabled = true;
-			}
-			if (Canvas2_Engineer.enabled == true) {
-				Canvas2_Engineer.enabled = false;
-			}
-			if (Canvas3_Combat.enabled == true) {
-				Canvas3_Combat.enabled = false;
-			}
-		} else if (newRole == 2) {
-			if (Canvas1_Captain.enabled == true) {
-				Canvas1_Captain.enabled = false;
-			}
-			if (Canvas2_Engineer.enabled == false) {
-				Canvas2_Engineer.enabled = true;
-			}
-			if (Canvas3_Combat.enabled == true) {
-				Canvas3_Combat.enabled = false;
-			}
-		} else if (newRole == 3) {
-			if (Canvas1_Captain.enabled == true) {
-				Canvas1_Captain.enabled = false;
-			}
-			if (Canvas2_Engineer.enabled == true) {
-				Canvas2_Engineer.enabled = false;
-			}
-			if (Canvas3_Combat.enabled == false) {
-				Canvas3_Combat.enabled = true;
-			}
+		for (int i = 0; i < AllCanvas.Length; i++) {
+			//AllCanvas [i].enabled = false;
+			AllCanvas [i].SetActive(false);
 		}
-			
+		AllCanvas [newRole].SetActive(true);
 	}
 
 	public void ChangePlayerRoleSlider(float newRole){

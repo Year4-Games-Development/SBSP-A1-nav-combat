@@ -48,6 +48,9 @@ public class CannonsController : MonoBehaviour {
 
 	//===================================================================================================================================================================
 
+	public int CannonBallDamage{
+		get{return broadsideCannonsModel.CannonBallDamage;}
+	}
 
 	public float CannonThrustForce{
 		get {return broadsideCannonsModel.CannonThrustForce;}
@@ -133,12 +136,12 @@ public class CannonsController : MonoBehaviour {
 	public void FireCannons(int side){
 		if (side == 0) {
 			for (int i = 0; i < cannonBatteryLeft.Length; i++) {
-				cannonBatteryLeft [i].FireCannon ();
+				cannonBatteryLeft [i].CmdFireCannon ();
 			}
 			lastFireTimeLeft = Time.time;
 		} else if (side == 1) {
 			for (int i = 0; i < cannonBatteryLeft.Length; i++) {
-				cannonBatteryRight [i].FireCannon ();
+				cannonBatteryRight [i].CmdFireCannon ();
 			}
 			lastFireTimeRight = Time.time;
 		} else {
