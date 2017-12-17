@@ -100,4 +100,36 @@ public class EngineController : MonoBehaviour {
 
 
 	}
+
+	float sliderVal = 0f;
+
+	public void EngineAutoAcc(Slider slider)
+	{
+		if (sliderVal < slider.value)
+		{
+			if (axis == "Forward")
+			{
+				engine.SetPower ((slider.value));
+				rb.AddForce ((-sliderVal * 500)* transform.forward);
+				rb.AddForce ((engine.GetPower ()*500) * transform.forward);
+				engView.UpdatePower (slider.value);
+				engine.SetPower(0);
+			}
+			sliderVal = slider.value;
+			Debug.Log ("Slider val: " + sliderVal);
+		}
+		else if(sliderVal > slider.value)
+		{
+			if (axis == "Backward")
+			{
+				engine.SetPower (sliderVal - (slider.value));
+				rb.AddForce ((-engine.GetPower ()* 500) * transform.forward);
+				engView.UpdatePower (slider.value);
+				//engine.SetPower (0);
+			}
+			sliderVal = slider.value;
+			Debug.Log ("Slider val: " + sliderVal);
+		}
+			
+	}
 }

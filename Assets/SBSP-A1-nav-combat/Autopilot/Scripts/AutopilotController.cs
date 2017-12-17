@@ -7,6 +7,7 @@ public class AutopilotController : MonoBehaviour {
 
 	public Button turnRightButton, turnLeftButton, strafeRightButton, strafeLeftButton;
 	public Slider thrusterPowerSlider;
+	public Slider speedSlider;
 
 	private AutopilotModel autopilot;
 	private Rigidbody rb;
@@ -23,8 +24,9 @@ public class AutopilotController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (transform.InverseTransformDirection (rb.velocity));
+		//Debug.Log (transform.InverseTransformDirection (rb.velocity));
 		if (autopilot.isAutopilotOn ()) {
+			speedSlider.interactable = true;
 			if ( autopilotThrusterCounter++ % 2 == 0){
 				//Autopilot Heading Control
 				//Calculate Rotational Velocity Step 1
