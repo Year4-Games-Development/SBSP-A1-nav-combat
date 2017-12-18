@@ -9,4 +9,4 @@ Go to the "dev" branch
 
 Go to the -> Assets -> _Scenes
 
-Just run the MainSceneV004x.unity
+Just run the MainSceneV006all.unity
